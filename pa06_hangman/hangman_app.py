@@ -87,7 +87,7 @@ def play_hangman():
                             want_to_play=False
                         break
             else:
-                print('Error input, try again!') # If type in two letters mistakenly
+                print('Error input! Let us start over!') # If type in two letters mistakenly
                 break
 
 
