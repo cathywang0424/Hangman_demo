@@ -47,8 +47,9 @@ def hangman():
 		# then see if the word is complete
         
         if guesses not in word:
-            print("The lett")
+            print("The letter is not in the word.")
             guess = input("Please enter another letter:")
+            
 		# if letter not in word, then tell them
 		state['guesses'] += [letter]
 		return render_template('play.html',state=state)
