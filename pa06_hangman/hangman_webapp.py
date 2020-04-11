@@ -36,14 +36,14 @@ def hangman():
 		letter = request.form['guess']
 		# check if letter has already been guessed
         # and generate a response to guess again
-    if guesses in word_so_far:
-        print("You already guessed that letter.")
-        guess = input("Please enter another letter:")
+        if guesses in word_so_far:
+            print("You already guessed that letter.")
+            guess = input("Please enter another letter:")
             
 		# else check if letter is in word
-    for guesses in word:
-        if word = word_so_far:
-            print("You won! The word is", word)
+        for guesses in word:
+            if word = word_so_far:
+                print("You won! The word is", word)
 		# then see if the word is complete
         
         if guesses not in word:
