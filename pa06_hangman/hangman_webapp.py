@@ -39,7 +39,7 @@ def hangman():
 		elif letter in word:
 			print("Congrats, the letter is in word!")
 			guesses.append(letter)
-		if word = word_so_far:
+		if word == word_so_far:
 			print("You've guessed the word. The word is", word)
 		elif letter not in word:
 			print("The letter is not in the word. Try again.")
