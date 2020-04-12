@@ -41,7 +41,10 @@ def hangman():
             guesses.append(letter)
             if word = word_so_far:
                 print("You've guessed the word. The word is", word)
-        elif letter not in word
+        elif letter not in word:
+            print("The letter is not in the word. Try again.")
+            guesses.append(letter)
+
 		# check if letter has already been guessed
         # and generate a response to guess again
 		# else check if letter is in word
