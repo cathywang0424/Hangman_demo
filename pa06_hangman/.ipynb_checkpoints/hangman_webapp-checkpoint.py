@@ -34,15 +34,15 @@ def hangman():
 	elif request.method == 'POST':
 		letter = request.form['guess']
 
-	if guess in guesses:
-		guesses.append(guess)
+	if letter in guesses:
+		guesses.append(letter)
 		print("You already guessed that letter. Please guess again.")
-	elif guess in word:
+	elif letter in word:
 		print("The letter is in word!")
-		guesses.append(guess)
+		guesses.append(letter)
 		if word == word_so_far:
 			print("Contratulation!The word is:", word)
-	elif guess not in word:
+	elif letter not in word:
 		print("The letter is not in word. Please try again")
 
 		# check if letter has already been guessed
