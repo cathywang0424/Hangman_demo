@@ -33,7 +33,7 @@ def hangman():
 		return play()
 	elif request.method == 'POST':
 		letter = request.form['guess']
-	if guess in guesses:
+	if 'guess' in 'guesses':
 		guesses.append(guess)
 		print("You already guessed that letter. Please guess again.")
 	elif guess in word:
