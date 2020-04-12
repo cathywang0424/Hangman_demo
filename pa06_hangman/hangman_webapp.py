@@ -31,19 +31,18 @@ def hangman():
 	global state
 	if request.method == 'GET':
 		return play()
-
 	elif request.method == 'POST':
 		letter = request.form['guess']
-	if letter in guesses:
-		print("This letter has been guessed. Please guess another one.")
-	elif letter in word:
-		print("Congrats, the letter is in word!")
-		guesses.append(letter)
-	if word == word_so_far:
-		print("You've guessed the word. The word is", word)
-	elif letter not in word:
-		print("The letter is not in the word. Try again.")
-		guesses.append(letter)
+	if guess in guesses:
+		guesses.append(guess)
+		print("You already guessed that letter. Please guess again.")
+	elif guess in word:
+		print("The letter is in word!")
+		guesses.append(guess)
+		if word == word_so_far:
+			print("Contratulation!The word is:", word)
+	elif guess not in word:
+		print("The letter is not in word. Please try again")
 
 		# check if letter has already been guessed
         # and generate a response to guess again
