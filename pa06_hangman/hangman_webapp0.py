@@ -4,7 +4,7 @@
 """
 
 from flask import Flask, render_template, request
-import hangman_app
+import hangman_app0
 import hangman_methods
 app = Flask(__name__)
 
@@ -28,7 +28,7 @@ def main():
 @app.route('/start')
 def play():
 	global state
-	state['word']=hangman_app.generate_random_word()
+	state['word']=hangman_app0.generate_random_word()
 	state['guesses'] = []
 	return render_template("start.html",state=state)
 
