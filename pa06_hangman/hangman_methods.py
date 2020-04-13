@@ -2,6 +2,13 @@
    hangman_methods.py is used as a module in the hangman_webapp flask app
 """
 
+import random
+words = "apple banana mango strawberry orange grape pineapple apricot lemon coconut watermelon cherry papaya berry blueberry blackberry peach lychee muskmelon".split()
+
+def generate_random_word():
+    return random.choice(words)
+
+
 def play_hangman():
     
     want_to_play = input("Do you want to play the game? Please enter y or n.")
