@@ -11,7 +11,8 @@ global state
 state = {'guesses':[],
          'word':"interesting",
 		 'word_so_far':"-----------",
-		 'done':False}
+		 'done':False,
+		 'dashes':""}
 
 @app.route('/')
 @app.route('/main')
