@@ -95,4 +95,4 @@ while(want_to_play):
 
 
 if __name__ == '__main__':
-play_hangman()
+    play_hangman()
