@@ -72,13 +72,12 @@ def hangman():
 		elif letter not in word:
 		# if letter not in word, then tell them
 			print('The letter is not in the word. Please try again.')
-            
-		for d in state['word']:
-			if d in state['guesses']:
-				state['dashes'] += d
+        
+        for letter in state['word']:
+			if letter in state['guesses']:
+				state['dashes'] += letter
 			else:
 				state['dashes'] += '-'
-        
 		return render_template('play.html',state=state, letter=letter, letter_length=letter_length, already_guessed=already_guessed, won=won, word=state['word'], guesses=state['guesses'])
 
 
