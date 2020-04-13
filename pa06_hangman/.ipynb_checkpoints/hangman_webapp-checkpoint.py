@@ -73,7 +73,7 @@ def hangman():
 		# if letter not in word, then tell them
 			print('The letter is not in the word. Please try again.')
         
-        for letter in state['word']:
+		for letter in state['word']:
 			if letter in state['guesses']:
 				state['dashes'] += letter
 			else:
