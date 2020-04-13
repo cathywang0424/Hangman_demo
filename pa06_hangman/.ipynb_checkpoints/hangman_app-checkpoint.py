@@ -6,10 +6,6 @@
 import random
 words = "apple banana mango strawberry orange grape pineapple apricot lemon coconut watermelon cherry papaya berry blueberry blackberry peach lychee muskmelon".split()
 
-def get_word_so_far(word):
-    word_so_far = '-' * len(word)
-    return word_so_far
-
 def generate_random_word():
     return random.choice(words)
 
