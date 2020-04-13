@@ -4,7 +4,7 @@
 """
 
 from flask import Flask, render_template, request
-import hangman_app
+import hangman_methods
 app = Flask(__name__)
 
 global state
