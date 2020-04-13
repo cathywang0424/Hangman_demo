@@ -25,6 +25,8 @@ def play():
 	state['guesses'] = []
 	return render_template("start.html",state=state)
 
+@app.route('/biopage')
+
 @app.route('/play',methods=['GET','POST'])
 def hangman():
 	""" plays hangman game """
