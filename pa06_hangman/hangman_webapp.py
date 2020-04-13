@@ -23,7 +23,7 @@ def play():
 	global state
 	state['word']=hangman_methods.generate_random_word()
 	state['guesses'] = []
-	word_so_far = hangman_app.get_word_so_far(state['word'])
+	word_so_far = hangman_methods.get_word_so_far(state['word'])
 	state['word_so_far'] = word_so_far
 	print(state)
 	return render_template("start.html",state=state)
@@ -33,7 +33,7 @@ def play():
 def hangman():
 	""" plays hangman game """
 	global state
-	word_so_far = hangman_app.get_word_so_far(state['word'])
+	word_so_far = hangman_methods.get_word_so_far(state['word'])
 	state['word_so_far'] = word_so_far
 	if request.method == 'GET':
 		return play()
@@ -61,7 +61,7 @@ def hangman():
 			print("The letter is in word!")
 
 		state['guesses'] += [letter]
-		word_so_far = hangman_app.get_word_so_far(state['word'])
+		word_so_far = hangman_methods.get_word_so_far(state['word'])
         
 		state['word_so_far'] = word_so_far
 		if state['word_so_far'] == state['word']:
