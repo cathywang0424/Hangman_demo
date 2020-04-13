@@ -6,11 +6,20 @@ import random
 words = "apple banana mango strawberry orange grape pineapple apricot lemon coconut watermelon cherry papaya berry blueberry blackberry peach lychee muskmelon".split()
 
 def generate_random_word():
-    return random.choice(words)
+    word = random.choice(words)
+    for i in word:
+        print("_", end ="")
+    return word
 
-def get_word_so_far(word):
-    word_so_far = '-' * len(word)
-    return word_so_far
+def print_word(state):
+    dashes = []
+    for i in state['word']:
+        if i in state['guesses']:
+            dashes.append(i)
+        else:
+            dashes.append("_ ")
+    dashes = "".join(dashes)
+    return dashes
 
 def play_hangman():
     
@@ -34,14 +43,7 @@ def play_hangman():
             elif letter in guessed_letters:
                 guesses_left = guesses_left - 1
                 print("You already guessed that letter.")
-                dashes = []
-                for letter in word:
-                    if letter in guessed_letters:
-                        dashes += letter
-                    else:
-                        dashes += '-'
-                print(dashes)
-                print()
+                print_word(word, guessed_letters)
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
 
@@ -49,22 +51,14 @@ def play_hangman():
                 guesses_left = guesses_left - 1
                 guessed_letters.append(letter)
                 print("The letter you guessed is not in the word.")
-                for char in word:
-                    if char in guessed_letters:
-                        print (char, end =" ")
-                    else:
-                        print('_', end =" ")
+                print_word(word, guessed_letters)
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
 
             else:
                 guessed_letters.append(letter)
                 length = length-1
-                for char in word:
-                    if char in guessed_letters:
-                        print (char, end =" ")
-                    else:
-                        print('_', end =" ")
+                print_word(word, guessed_letters)
                 print("The letter you guessed is in the word.")
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
@@ -81,6 +75,12 @@ def play_hangman():
             elif length == 0:
                 done = True
                 print("You won the game! The word is ", word)
+                want_to_play=input("Do you want to play another round? Please enter y or n.")
+                if want_to_play=="y":
+                    want_to_play=True
+                if want_to_play=="n":
+                    want_to_play=False
+                    
   
             else:
                 letter = input("Please guess a letter: ")
