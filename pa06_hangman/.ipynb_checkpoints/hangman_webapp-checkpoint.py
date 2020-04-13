@@ -26,6 +26,9 @@ def play():
 	return render_template("start.html",state=state)
 
 @app.route('/biopage')
+def bio():
+	global state
+	return render_template("bio.html",state=state)
 
 @app.route('/play',methods=['GET','POST'])
 def hangman():
