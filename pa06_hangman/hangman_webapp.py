@@ -4,7 +4,6 @@
 """
 
 from flask import Flask, render_template, request
-import hangman_app
 import hangman_methods
 app = Flask(__name__)
 
@@ -22,9 +21,9 @@ def main():
 @app.route('/start')
 def play():
 	global state
-	state['word']=hangman_app.generate_random_word()
+	state['word']=hangman_methods.generate_random_word()
 	state['guesses'] = []
-	word_so_far = hangman_methods.get_word_so_far(state['word'])
+	word_so_far = hangman_methods.print_word(state)
 	state['word_so_far'] = word_so_far
 	print(state)
 	return render_template("start.html",state=state)
@@ -34,7 +33,7 @@ def play():
 def hangman():
 	""" plays hangman game """
 	global state
-	word_so_far = hangman_methods.get_word_so_far(state['word'])
+	word_so_far = hangman_methods.print_word(state)
 	state['word_so_far'] = word_so_far
 	if request.method == 'GET':
 		return play()
@@ -48,6 +47,7 @@ def hangman():
 		letter_length = False
 		already_guessed = False
 		won = False
+        
 		if len(letter)>1:
 			letter_length = True
 			print("Please enter one letter at a time.")
@@ -62,6 +62,7 @@ def hangman():
 
 		state['guesses'] += [letter]
 		word_so_far = hangman_methods.get_word_so_far(state['word'])
+        
 		state['word_so_far'] = word_so_far
 		if state['word_so_far'] == state['word']:
 		# then see if the word is complete
