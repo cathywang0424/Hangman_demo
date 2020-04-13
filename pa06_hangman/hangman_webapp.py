@@ -61,7 +61,7 @@ def hangman():
 			print("The letter is in word!")
 
 		state['guesses'] += [letter]
-		word_so_far = hangman_methods.get_word_so_far(state['word'])
+		word_so_far = hangman_methods.print_word(state)
         
 		state['word_so_far'] = word_so_far
 		if state['word_so_far'] == state['word']:

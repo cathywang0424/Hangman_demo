@@ -8,6 +8,15 @@ words = "apple banana mango strawberry orange grape pineapple apricot lemon coco
 def generate_random_word():
     return random.choice(words)
 
+def print_word(word, guessed_letters):
+    dashes = []
+    for d in word:
+        if d in guessed_letters:
+            dashes += d
+        else:
+        dashes += '-'
+            print(dashes)
+            print()
 
 def play_hangman():
     
