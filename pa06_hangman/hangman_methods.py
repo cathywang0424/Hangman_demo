@@ -59,11 +59,11 @@ while(want_to_play):
         else:
             letter = input("Please guess a letter: ")
 
-    want_to_play=input("Do you want to play another round? Please enter y or n.")
-        if want_to_play=="y":
-            want_to_play=True
-        if want_to_play=="n":
-            want_to_play=False
+want_to_play=input("Do you want to play another round? Please enter y or n.")
+    if want_to_play=="y":
+        want_to_play=True
+    if want_to_play=="n":
+        want_to_play=False
 
 if __name__ == '__main__':
     play_hangman()
