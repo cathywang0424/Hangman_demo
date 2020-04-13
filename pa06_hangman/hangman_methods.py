@@ -10,6 +10,7 @@ def generate_random_word():
 
 def print_word(word, guessed_letters):
     dashes = []
+    guessed_letters = []
     for d in word:
         if d in guessed_letters:
             dashes += d
