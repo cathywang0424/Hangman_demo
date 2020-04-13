@@ -34,6 +34,14 @@ def play_hangman():
             elif letter in guessed_letters:
                 guesses_left = guesses_left - 1
                 print("You already guessed that letter.")
+                dashes = []
+                for d in word:
+                    if d in guessed_letters:
+                        dashes += d
+                    else:
+                        dashes += '-'
+                print(dashes)
+                print()
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
 
@@ -41,12 +49,28 @@ def play_hangman():
                 guesses_left = guesses_left - 1
                 guessed_letters.append(letter)
                 print("The letter you guessed is not in the word.")
+                dashes = []
+                for d in word:
+                    if d in guessed_letters:
+                        dashes += d
+                    else:
+                        dashes += '-'
+                print(dashes)
+                print()
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
 
             else:
                 guessed_letters.append(letter)
                 length = length-1
+                dashes = []
+                for d in word:
+                    if d in guessed_letters:
+                        dashes += d
+                    else:
+                        dashes += '-'
+                print(dashes)
+                print()
                 print("The letter you guessed is in the word.")
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
@@ -63,14 +87,6 @@ def play_hangman():
             elif length == 0:
                 done = True
                 print("You won the game! The word is ", word)
-                dashes = []
-                for d in word:
-                    if d in guessed_letters:
-                        dashes += d
-                    else:
-                        dashes += '-'
-                print(dashes)
-                print()
                 
             else:
                 letter = input("Please guess a letter: ")
