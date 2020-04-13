@@ -17,7 +17,7 @@ def play_hangman():
     want_to_play = input("Do you want to play the game? Please enter y or n.")
 
     while want_to_play == "y":
-        word= generate_random_word()
+        word = generate_random_word()
         guessed_letters = []
         guesses_left = 6
         letter = input("Enter a letter:")
@@ -35,9 +35,9 @@ def play_hangman():
                 guesses_left = guesses_left - 1
                 print("You already guessed that letter.")
                 dashes = []
-                for d in word:
-                    if d in guessed_letters:
-                        dashes += d
+                for letter in word:
+                    if letter in guessed_letters:
+                        dashes += letter
                     else:
                         dashes += '-'
                 print(dashes)
@@ -49,28 +49,22 @@ def play_hangman():
                 guesses_left = guesses_left - 1
                 guessed_letters.append(letter)
                 print("The letter you guessed is not in the word.")
-                dashes = []
-                for d in word:
-                    if d in guessed_letters:
-                        dashes += d
+                for char in word:
+                    if char in guessed_letters:
+                        print (char, end =" ")
                     else:
-                        dashes += '-'
-                print(dashes)
-                print()
+                        print('_', end =" ")
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
 
             else:
                 guessed_letters.append(letter)
                 length = length-1
-                dashes = []
-                for d in word:
-                    if d in guessed_letters:
-                        dashes += d
+                for char in word:
+                    if char in guessed_letters:
+                        print (char, end =" ")
                     else:
-                        dashes += '-'
-                print(dashes)
-                print()
+                        print('_', end =" ")
                 print("The letter you guessed is in the word.")
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
@@ -87,7 +81,7 @@ def play_hangman():
             elif length == 0:
                 done = True
                 print("You won the game! The word is ", word)
-                
+  
             else:
                 letter = input("Please guess a letter: ")
 

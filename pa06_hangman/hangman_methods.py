@@ -49,28 +49,22 @@ def play_hangman():
                 guesses_left = guesses_left - 1
                 guessed_letters.append(letter)
                 print("The letter you guessed is not in the word.")
-                dashes = []
-                for letter in word:
-                    if letter in guessed_letters:
-                        dashes += letter
+                for char in word:
+                    if char in guessed_letters:
+                        print (char, end =" ")
                     else:
-                        dashes += '-'
-                print(dashes)
-                print()
+                        print('_', end =" ")
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
 
             else:
                 guessed_letters.append(letter)
                 length = length-1
-                dashes = []
-                for letter in word:
-                    if letter in guessed_letters:
-                        dashes += letter
+                for char in word:
+                    if char in guessed_letters:
+                        print (char, end =" ")
                     else:
-                        dashes += '-'
-                print(dashes)
-                print()
+                        print('_', end =" ")
                 print("The letter you guessed is in the word.")
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
