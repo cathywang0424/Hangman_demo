@@ -47,13 +47,7 @@ def hangman():
 		letter_length = False
 		already_guessed = False
 		won = False
-        
-		for letter in state['word']:
-			if letter in state['guesses']:
-				state['dashes'] += letter
-			else:
-				state['dashes'] += '-'
-                
+
 		if len(letter)>1:
 			letter_length = True
 			print("Please enter one letter at a time.")
