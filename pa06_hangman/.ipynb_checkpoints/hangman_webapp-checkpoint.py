@@ -23,41 +23,53 @@ def play():
 	global state
 	state['word']=hangman_app.generate_random_word()
 	state['guesses'] = []
+	word_so_far = hangman_methods.print_word(state)
+	state['word_so_far'] = word_so_far
+	print(state)
 	return render_template("start.html",state=state)
 
-@app.route('/biopage')
-def bio():
-	global state
-	return render_template("bio.html",state=state)
 
 @app.route('/play',methods=['GET','POST'])
 def hangman():
 	""" plays hangman game """
 	global state
+	word_so_far = hangman_methods.print_word(state)
+	state['word_so_far'] = word_so_far
 	if request.method == 'GET':
 		return play()
+
 	elif request.method == 'POST':
 		letter = request.form['guess']
-        
+		guesses = []
+		guesses.append(letter)
+		guesses= "".join(guesses)
+		word = state['word']
+		letter_length = False
+		already_guessed = False
+		won = False
+		if len(letter)>1:
+			letter_length = True
+			print("Please enter one letter at a time.")
 		if letter in state['guesses']:
-			return "You already guessed that letter. Please guess another letter."
-
-		elif letter in state['word']:
-			return "The letter is in word!"
-        
-		elif letter not in state['word']:
-			return "The letter is not in word. Please try again."
-
-
 		# check if letter has already been guessed
-        # and generate a response to guess again
+			already_guessed = True
+			print("You already guessed that letter. Please guess another letter.")
+			# and generate a response to guess again
+		elif letter in word:
 		# else check if letter is in word
-		# then see if the word is complete
-		# if letter not in word, then tell them
+			print("The letter is in word!")
+
 		state['guesses'] += [letter]
-		return render_template('play.html',state=state)
-
-
+		word_so_far = hangman_methods.print_word(state)
+		state['word_so_far'] = word_so_far
+		if state['word_so_far'] == state['word']:
+		# then see if the word is complete
+			won = True
+			print('You have won the game!')
+		elif letter not in word:
+		# if letter not in word, then tell them
+			print('The letter is not in the word. Please try again.')
+		return render_template('play.html',state=state, letter=letter, letter_length=letter_length, already_guessed=already_guessed, won=won, word=state['word'], guesses=state['guesses'])
 
 
 if __name__ == '__main__':
