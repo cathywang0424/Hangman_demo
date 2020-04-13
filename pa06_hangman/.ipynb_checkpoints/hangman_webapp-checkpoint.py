@@ -35,17 +35,17 @@ def hangman():
 		letter = request.form['guess']
         
 		if letter in state['guesses']:
-			print("You already guessed that letter. Please guess another letter.")
+			return "You already guessed that letter. Please guess another letter."
 			state['guesses'] += [letter]
 			return render_template('play.html',state=state)
 
 		elif letter in state['word']:
-			print("The letter is in word!")
+			return "The letter is in word!"
 			state['guesses'] += [letter]
 			return render_template('play.html',state=state)
         
 		elif letter not in state['word']:
-			print("The letter is not in word. Please try again.")
+			return "The letter is not in word. Please try again."
 			state['guesses'] += [letter]
 			return render_template('play.html',state=state)
 
