@@ -8,6 +8,10 @@ words = "apple banana mango strawberry orange grape pineapple apricot lemon coco
 def generate_random_word():
     return random.choice(words)
 
+def get_word_so_far(word):
+    word_so_far = '-' * len(word)
+    return word_so_far
+
 def play_hangman():
     
     want_to_play = input("Do you want to play the game? Please enter y or n.")
