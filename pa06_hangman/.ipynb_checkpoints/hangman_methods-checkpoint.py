@@ -53,17 +53,25 @@ while(want_to_play):
         if length == 0:
             done = True
             print("You won the game! The word is ", word)
+            want_to_play=input("Do you want to play another round? Please enter y or n.")
+            if want_to_play=="y":
+                want_to_play=True
+            if want_to_play=="n":
+                want_to_play=False
+                
         elif guesses_left == 0:
             done = True
             print("You lost, the word is ", word)
+            want_to_play=input("Do you want to play another round? Please enter y or n.")
+            if want_to_play=="y":
+                want_to_play=True
+            if want_to_play=="n":
+                want_to_play=False
+        
         else:
             letter = input("Please guess a letter: ")
 
-want_to_play=input("Do you want to play another round? Please enter y or n.")
-    if want_to_play=="y":
-        want_to_play=True
-    if want_to_play=="n":
-        want_to_play=False
+
 
 if __name__ == '__main__':
     play_hangman()
