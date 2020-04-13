@@ -17,7 +17,7 @@ def play_hangman():
     want_to_play = input("Do you want to play the game? Please enter y or n.")
 
     while want_to_play == "y":
-        word= generate_random_word()
+        word = generate_random_word()
         guessed_letters = []
         guesses_left = 6
         letter = input("Enter a letter:")
