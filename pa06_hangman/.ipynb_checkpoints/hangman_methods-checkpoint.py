@@ -4,7 +4,7 @@
 
 def play_hangman():
     
-want_to_play = input("Do you want to play the game? Please enter y or n.")
+    want_to_play = input("Do you want to play the game? Please enter y or n.")
     
 if want_to_play=="y":
     want_to_play=True
