@@ -3,15 +3,18 @@
    it is also used as a module in the hangman_webapp flask app
 """
 
+"""
+   hangman_app.py is an app for playing hangman in the terminal
+   it is also used as a module in the hangman_webapp flask app
+"""
+
 import random
 words = "apple banana mango strawberry orange grape pineapple apricot lemon coconut watermelon cherry papaya berry blueberry blackberry peach lychee muskmelon".split()
 
-def get_word_so_far(word):
-    word_so_far = '-' * len(word)
-    return word_so_far
 
 def generate_random_word():
     return random.choice(words)
+
 
 def check(word, guessed_letters, guess):
     blank = ""
@@ -33,65 +36,64 @@ def check(word, guessed_letters, guess):
 
 
 def play_hangman():
-   """ this is the python script version of the game """
-want_to_play=input("Do you want to play the game? Please enter y or n.")
-if want_to_play=="y":
-    want_to_play=True
-    print("Welcome to Hangman! The word you will be guessing is a fruit.")
-if want_to_play=="n":
-    want_to_play=False
-while(want_to_play):
-    word= generate_random_word()
-    #word = "apple"
-    guessed_letters = []
-    guesses_left = 6
-    guess = input("Enter a letter:")
-    done = False
-    while not done:
-        if guess in guessed_letters:
-            guessed_letters.append(guess)
-            print("You already guessed that letter.")
-            guess = input("Enter a letter:")
-
-        elif len(guess) == 1:
-            guessed_letters.append(guess)
-            result, bingo = check(word, guessed_letters, guess)
-
-            # Guessed correct word finally
-            if result == word:
-                done = True
-                print("Contratulation!The word is:", word)
-                want_to_play=input("Do you want to play another round? Please enter y or n.")
-                if want_to_play=="y":
-                    want_to_play=True
-                if want_to_play=="n":
-                    want_to_play=False
-
-            # if guessed correct letter, keep the guesses_left
-            elif bingo == True:
-                print(result)
-                print("You have", guesses_left, "guesses left.")
+    want_to_play=input("Do you want to play the game? Please enter y or n.")
+    if want_to_play=="y":
+        want_to_play=True
+        print("Welcome to Hangman! The word you will be guessing is a fruit.")
+    if want_to_play=="n":
+        want_to_play=False
+    while(want_to_play):
+        word= generate_random_word()
+        #word = "apple"
+        guessed_letters = []
+        guesses_left = 6
+        guess = input("Enter a letter:")
+        done = False
+        while not done:
+            if guess in guessed_letters:
+                guessed_letters.append(guess)
+                print("You already guessed that letter.")
                 guess = input("Enter a letter:")
 
-            # if  guessed wrong letter, -1
-            else:
-                print(result)
-                guesses_left = guesses_left - 1
-                print("You have", guesses_left, "guesses left.")
-                guess = input("Enter a letter:")
-                if guesses_left == 0:
-                    print("Sorry, you used up all chances to guess, you lose the game.")
-                    print("The word is", word, '\n')
-                    want_to_play=input("Do you want to play the game? Please enter y or n.")
+            elif len(guess) == 1:
+                guessed_letters.append(guess)
+                result, bingo = check(word, guessed_letters, guess)
+
+                # Guessed correct word finally
+                if result == word:
+                    done = True
+                    print("Contratulation!The word is:", word)
+                    want_to_play=input("Do you want to play another round? Please enter y or n.")
                     if want_to_play=="y":
                         want_to_play=True
-                        print("Welcome to Hangman! The word you will be guessing is a fruit.")
                     if want_to_play=="n":
                         want_to_play=False
-                    break
-        else:
-            print('Error input! Let us start over!') # If type in two letters mistakenly
-            break
+
+                # if guessed correct letter, keep the guesses_left
+                elif bingo == True:
+                    print(result)
+                    print("You have", guesses_left, "guesses left.")
+                    guess = input("Enter a letter:")
+
+                # if  guessed wrong letter, -1
+                else:
+                    print(result)
+                    guesses_left = guesses_left - 1
+                    print("You have", guesses_left, "guesses left.")
+                    guess = input("Enter a letter:")
+                    if guesses_left == 0:
+                        print("Sorry, you used up all chances to guess, you lose the game.")
+                        print("The word is", word, '\n')
+                        want_to_play=input("Do you want to play the game? Please enter y or n.")
+                        if want_to_play=="y":
+                            want_to_play=True
+                            print("Welcome to Hangman! The word you will be guessing is a fruit.")
+                        if want_to_play=="n":
+                            want_to_play=False
+                        break
+            else:
+                print('Error input! Let us start over!') # If type in two letters mistakenly
+                break
 
 
 if __name__ == '__main__':
