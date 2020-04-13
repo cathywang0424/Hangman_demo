@@ -14,7 +14,7 @@ def print_word(word, guessed_letters):
         if d in guessed_letters:
             dashes += d
         else:
-        dashes += '-'
+            dashes += '-'
             print(dashes)
             print()
 
