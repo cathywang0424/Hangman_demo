@@ -6,25 +6,27 @@ import random
 words = "apple banana mango strawberry orange grape pineapple apricot lemon coconut watermelon cherry papaya berry blueberry blackberry peach lychee muskmelon".split()
 
 def generate_random_word():
-    return random.choice(words)
+    word = random.choice(words)
+    for i in word:
+        print("_", end ="")
+    return word
 
-def print_word(word, guessed_letters):
+def print_word(state):
     dashes = []
-    guessed_letters = []
-    for d in word:
-        if d in guessed_letters:
-            dashes += d
+    for i in state['word']:
+        if i in state['guesses']:
+            dashes.append(i)
         else:
-            dashes += '-'
-            print(dashes)
-            print()
+            dashes.append("_ ")
+    dashes = "".join(dashes)
+    return dashes
 
 def play_hangman():
     
     want_to_play = input("Do you want to play the game? Please enter y or n.")
 
     while want_to_play == "y":
-        word= generate_random_word()
+        word = generate_random_word()
         guessed_letters = []
         guesses_left = 6
         letter = input("Enter a letter:")
@@ -56,21 +58,12 @@ def play_hangman():
             else:
                 guessed_letters.append(letter)
                 length = length-1
-                print("The letter you guessed is in the word.")
                 print_word(word, guessed_letters)
+                print("The letter you guessed is in the word.")
                 print("These are the letters you have guessed: ", guessed_letters)
                 print("you have", guesses_left, "guesses left.")
 
-            if length == 0:
-                done = True
-                print("You won the game! The word is ", word)
-                want_to_play=input("Do you want to play another round? Please enter y or n.")
-                if want_to_play=="y":
-                    want_to_play=True
-                if want_to_play=="n":
-                    want_to_play=False
-
-            elif guesses_left == 0:
+            if guesses_left == 0:
                 done = True
                 print("You lost, the word is ", word)
                 want_to_play=input("Do you want to play another round? Please enter y or n.")
@@ -78,7 +71,17 @@ def play_hangman():
                     want_to_play=True
                 if want_to_play=="n":
                     want_to_play=False
-
+                    
+            elif length == 0:
+                done = True
+                print("You won the game! The word is ", word)
+                want_to_play=input("Do you want to play another round? Please enter y or n.")
+                if want_to_play=="y":
+                    want_to_play=True
+                if want_to_play=="n":
+                    want_to_play=False
+                    
+  
             else:
                 letter = input("Please guess a letter: ")
 
