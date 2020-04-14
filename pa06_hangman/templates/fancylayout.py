@@ -25,7 +25,7 @@
 </head>
 <body>
 	<div class="text-center">
-        <a class="btn btn-primary" href="/about">About</a>
+        <a class="btn btn-primary" href="/About">About</a>
 				<a class="btn btn-primary" href="/start">New Game</a>
 				  </div>
     <div class="container" id="content">
