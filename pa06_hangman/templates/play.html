@@ -16,4 +16,19 @@
    {{x}}
   {% endfor %}
 
+  {% if letter not in word %}
+    <p>The letter is not in the word. Please try again.</p>
+
+  {% elif already_guessed == true %}
+    <p>You already guessed that letter. Please guess another letter.</p>
+
+  {% elif letter in word %}
+    <p>The letter is in word!</p>
+  {% endif %}
+
+  {% if won == true %}
+    <font size="30">You have won the game!</font>
+  {% endif %}
+
+
 {% endblock %}
