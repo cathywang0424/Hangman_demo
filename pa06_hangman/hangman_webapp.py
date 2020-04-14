@@ -62,7 +62,7 @@ def hangman():
 
 		state['guesses'] += [letter]
 		word_so_far = hangman_methods.print_word(state)
-
+        
 		state['word_so_far'] = word_so_far
 		if state['word_so_far'] == state['word']:
 		# then see if the word is complete
@@ -74,9 +74,6 @@ def hangman():
                 
 		return render_template('play.html',state=state, letter=letter, letter_length=letter_length, already_guessed=already_guessed, won=won, word=state['word'], guesses=state['guesses'])
 
-@app.route('/About')
-def About():
-    return render_template("About.html")
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=3000)
