@@ -1,2 +1,3 @@
 # pa06_hangman
-cs10a_spr20_PA06
+the pa06_hangman folder contains the jupyter notebook and shell versions of the game hangman
+the PA06 folder contains the flask version of the game hangman
